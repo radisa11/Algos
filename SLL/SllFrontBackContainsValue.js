@@ -78,11 +78,27 @@ class SinglyLinkedList {
         return values;
             
     }
+
+    removeFront() {
+        var temp = this.head;
+        this.head = this.head.next;
+        temp.next = null;
+    }
+
+    removeBack () {
+        var runner = this.head;
+        while(runner.next.next){
+            runner = runner.next
+        }
+        this.tail = runner;
+        this.tail.next = null
+    }
+
 }
 
 var new_sll = new SinglyLinkedList();
 
-new_sll.addToFront("Disneyland");
+new_sll.addToFront("Disneyland")
 console.log(new_sll.display());
 
 new_sll.addToFront("Las Vegas");
@@ -94,8 +110,13 @@ console.log(new_sll.display());
 new_sll.addToBack("Coca Cola Museum");
 console.log(new_sll.display());
 
-console.log(new_sll.contains("Las Vegas"));
-console.log(new_sll.contains("Mout Rushmore"));
-console.log(new_sll.contains("Statue of Liberty"));
-console.log(new_sll.contains("Disney World"));
+// console.log(new_sll.contains("Las Vegas"));
+// console.log(new_sll.contains("Mout Rushmore"));
+// console.log(new_sll.contains("Statue of Liberty"));
+// console.log(new_sll.contains("Disney World"));
 
+new_sll.removeFront();
+console.log(new_sll.display());
+
+new_sll.removeBack();
+console.log(new_sll.display());
