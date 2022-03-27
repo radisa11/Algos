@@ -94,6 +94,52 @@ class SinglyLinkedList {
         this.tail.next = null
     }
 
+    moveMinToFront(){
+        var min = this.head
+        var runner = this.head 
+        var walker = this.head 
+
+        while( runner.next != null){
+            if(runner.next.value < min.value){
+                min = runner.next
+                walker = runner
+            }
+            runner = runner.next
+        }
+        if( min == this.head){
+            console.log("Minimum value is already at the front")
+            return
+        }
+        walker.next = min.next
+        min.next = this.head
+        this.head = min
+    }
+
+    moveMinToBack(){
+        var max = this.head
+        var runner = this.head 
+        var walker = this.head 
+
+        while( runner.next != null){
+            if(runner.next.value > max.value){
+                max = runner.next
+                walker = runner
+            }
+            runner = runner.next
+        }
+        if( max == runner){
+            console.log("The Max is already at the back")
+            return
+        }
+        
+        if(max == this.head){
+            this.head = this.head.next
+        }
+        walker.next = max.next
+        max.next =null
+        runner.next = max
+    }
+
 }
 
 var new_sll = new SinglyLinkedList();
